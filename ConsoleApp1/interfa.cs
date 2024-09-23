@@ -1,6 +1,6 @@
 ﻿namespace Ejercicio;
 
-public interface interfa
+public interface interfaz
 {
     
 }
