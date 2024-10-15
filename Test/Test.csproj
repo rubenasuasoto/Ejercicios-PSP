@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\PruebaInicial\PruebaInicial.csproj" />
+        <ProjectReference Include="..ConsoleApp2/ConsoleApp2.csproj" />
     </ItemGroup>
 
 </Project>

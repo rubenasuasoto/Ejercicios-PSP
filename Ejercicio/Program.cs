@@ -1,4 +1,5 @@
-﻿using Ejercicio;
+﻿using ConsoleApp2.Ejercicio;
+using Ejercicio;
 
 // manual tests
 

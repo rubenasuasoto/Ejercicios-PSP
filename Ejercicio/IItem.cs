@@ -1,4 +1,4 @@
-﻿namespace Ejercicio;
+﻿namespace ConsoleApp2.Ejercicio;
 
 public interface IItem
 {

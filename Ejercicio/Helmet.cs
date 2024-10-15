@@ -1,4 +1,6 @@
-﻿namespace Ejercicio;
+﻿using Ejercicio;
+
+namespace ConsoleApp2.Ejercicio;
 
    
     public class Helmet: Protection

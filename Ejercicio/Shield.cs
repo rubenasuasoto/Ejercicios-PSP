@@ -1,4 +1,6 @@
-﻿namespace Ejercicio
+﻿using ConsoleApp2.Ejercicio;
+
+namespace Ejercicio
 {
     public class Shield : Protection
     {

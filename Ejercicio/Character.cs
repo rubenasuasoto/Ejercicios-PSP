@@ -1,9 +1,11 @@
 
-namespace Ejercicio
+using Ejercicio;
+
+namespace ConsoleApp2.Ejercicio
 {
     public class Character
     {
-        public const int DefaultMaxHP = 10;
+        public const int DefaultMaxHp = 10;
         public const int DefaultBaseDamage = 1;
         public const int DefaultBaseArmor = 0;
 
@@ -17,7 +19,7 @@ namespace Ejercicio
 
         private List<IItem> _inventory;
 
-        public Character(string name, int maxHitPoints = DefaultMaxHP, int baseDamage = DefaultBaseDamage,
+        public Character(string name, int maxHitPoints = DefaultMaxHp, int baseDamage = DefaultBaseDamage,
             int baseArmor = DefaultBaseArmor)
         {
             Name = name;
