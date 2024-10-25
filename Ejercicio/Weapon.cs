@@ -1,4 +1,4 @@
-﻿using Ejercicio;
+﻿
 
 namespace ConsoleApp2.Ejercicio;
 

@@ -8,10 +8,12 @@ var axe = new Axe();
 var sword = new Sword();
 var helmet = new Helmet(18);
 var shield = new Shield();
+var minion = new MinionItem("Lobo", 5, 6);
 character.AddItem(axe);
 character.AddItem(sword);
 character.AddItem(helmet);
 character.AddItem(shield);
+character.AddItem(minion);
 
 Console.WriteLine("Manual tests: ");
 

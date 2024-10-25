@@ -1,6 +1,4 @@
 
-using Ejercicio;
-
 namespace ConsoleApp2.Ejercicio
 {
     public class Character
@@ -18,6 +16,7 @@ namespace ConsoleApp2.Ejercicio
         public int Armor { get; set; }
 
         private List<IItem> _inventory;
+        private List<Minion> _minions;
 
         public Character(string name, int maxHitPoints = DefaultMaxHp, int baseDamage = DefaultBaseDamage,
             int baseArmor = DefaultBaseArmor)
@@ -28,18 +27,28 @@ namespace ConsoleApp2.Ejercicio
             BaseDamage = baseDamage;
             BaseArmor = baseArmor;
             _inventory = new List<IItem>();
+            _minions = new List<Minion>();
         }
 
-        // reduced method declaration
         public void AddItem(IItem item) => _inventory.Add(item);
         public bool RemoveItem(IItem item) => _inventory.Remove(item);
         public int InventoryCount() => _inventory.Count;
 
-        // normal method declaration
+        public void AddMinion(Minion minion) => _minions.Add(minion);
+        public bool RemoveMinion(Minion minion) => _minions.Remove(minion);
+
         public int Attack()
         {
             ApplyInventory();
-            return Damage;
+
+            // Sumar el daño de los minions
+            int totalDamage = Damage;
+            foreach (var minion in _minions)
+            {
+                totalDamage += minion.Attack();
+            }
+
+            return totalDamage;
         }
 
         public int Defense()
@@ -50,10 +59,8 @@ namespace ConsoleApp2.Ejercicio
 
         private void ApplyInventory()
         {
-            // initialize stats
             Damage = BaseDamage;
             Armor = BaseArmor;
-            // apply item effects
             foreach (var item in _inventory)
             {
                 item.Apply(this);
@@ -62,25 +69,14 @@ namespace ConsoleApp2.Ejercicio
 
         public void Heal(int amount)
         {
-            // controls HP not past MaxHP
-            if (amount + HitPoints > MaxHitPoints)
-                HitPoints = MaxHitPoints;
-            else
-                HitPoints += amount;
+            HitPoints = Math.Min(MaxHitPoints, HitPoints + amount);
         }
 
         public void ReceiveDamage(int amount)
         {
-            // controls HP not less than 0
-            if (HitPoints - amount < 0)
-                HitPoints = 0;
-            else
-                HitPoints -= amount;
+            HitPoints = Math.Max(0, HitPoints - amount);
         }
 
-
-
-        // for manual testing purposes
         public override string ToString()
         {
             string result = $"Character: {Name} | HP: {HitPoints}/{MaxHitPoints}\n";
@@ -90,10 +86,15 @@ namespace ConsoleApp2.Ejercicio
                 result += $"    {item}\n";
             }
 
+            result += $"  Minions:\n";
+            foreach (var minion in _minions)
+            {
+                result += $"    {minion}\n";
+            }
+
             result += $"  Attack: {Attack()}\n";
             result += $"  Defense: {Defense()}\n";
             return result;
         }
     }
 }
-
